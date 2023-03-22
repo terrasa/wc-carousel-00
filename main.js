@@ -1,7 +1,6 @@
 import './src/css/styles.css'
 import { setSlider } from './src/components/setSlider'
 import { SliderElement } from './src/components/SliderElements.js'
-import { Europe } from './src/components/maps/Europe'
 
 document.querySelector('#app').innerHTML = `
   <div class="slider__type--full-js">
@@ -25,8 +24,6 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 const isSlider = document.querySelectorAll('#app .slider__type--items, #app .slider__type--items-svg, #app .slider__type--items-data, #app .slider__type--full-js, #app .slider__type--full')
-
-// setSlider()
 
 isSlider.forEach(element => {
   if (element.classList.contains('slider__type--full-js')) {
@@ -53,6 +50,3 @@ isSlider.forEach(element => {
     document.querySelector('#app .slider__type--items-data').appendChild(sliderAppC)
   }
 })
-// const sliderApp = new SliderElement()
-
-// Europe()

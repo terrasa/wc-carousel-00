@@ -14,15 +14,3 @@ export function Europe () {
 
   // document.querySelector('#app').appendChild(map)
 }
-
-// export class EuropeanCountryMaps extends HTMLElement {
-//   id = null
-
-//   constructor () {
-//     super()
-//   }
-
-//   connectedCallback() {
-
-//   }
-// }
