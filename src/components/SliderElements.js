@@ -14,6 +14,10 @@ export class SliderElement extends HTMLElement {
     super()
     this.attachShadow({ mode: 'open' })
   }
+
+  // reload() {
+  //   window.addEventListener('resize',)
+  // }
   
   async setImages () {
     const container = document.createElement('div')

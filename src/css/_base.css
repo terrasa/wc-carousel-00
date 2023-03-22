@@ -95,3 +95,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.slider__type--items-data,
+.slider__type--items-svg,
+.slider__type--items {
+  padding: 0 2rem;
+}
