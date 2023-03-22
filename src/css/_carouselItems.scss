@@ -71,7 +71,7 @@ svg, path {
 
 .slider__slide {
   z-index: 0;
-  transition: z-index 0.5s;
+  transition: all 0.5s;
 
   .slider.items-data & {
     .slide__container {
@@ -85,7 +85,7 @@ svg, path {
       background-color: #ccc;
       text-decoration: none;
       z-index: 0;
-      transition: scale .5s, border-color .5s, z-index .5s;
+      transition: all .5s; /*scale .5s, border-color .5s, z-index .5s; /*z-index más tarde*/
     }
 
     & path {
@@ -104,7 +104,6 @@ svg, path {
           fill: #0a5fec;
         }
       }
-      
     }
   
     &:active,

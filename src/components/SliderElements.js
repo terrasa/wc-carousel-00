@@ -16,8 +16,9 @@ export class SliderElement extends HTMLElement {
   }
 
   // reload() {
-  //   window.addEventListener('resize',)
+    
   // }
+  // window.addEventListener('resize', this.reload)
   
   async setImages () {
     const container = document.createElement('div')

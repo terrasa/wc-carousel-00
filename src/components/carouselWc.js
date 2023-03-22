@@ -5,10 +5,6 @@ export function carouselWc (sliderRoot) {
   const nextSlide = sliderRoot.querySelector('.slider__btn--next')
   const prevSlide = sliderRoot.querySelector('.slider__btn--prev')
 
-  slides.forEach((slide, indx) => {
-    // slide.style.transform = `translateX(${indx * 100}%)`
-  })
-
   let currentSlide = 0
   const maxSlide = slides.length
 
