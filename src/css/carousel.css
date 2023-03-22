@@ -1,0 +1,17 @@
+@import './_carousel.scss';
+
+.slider__btn {
+  background-color: #aeecec;
+  border: 1px solid #164444;
+}
+
+.slider__btn:focus-visible {
+  outline: none;
+}
+
+/* modificar el ancho que ocupa el carrusel menor del 100%*/
+
+.slider__container {
+  width: 50%;
+  margin: 0px auto;
+}

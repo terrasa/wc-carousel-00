@@ -1,0 +1,10 @@
+@import './_carouselItems.scss';
+
+.slider__btn {
+  background-color: #58977d;
+  border: 1px solid #164444;
+}
+
+.slider__btn:focus-visible {
+  outline: none;
+}
