@@ -8,36 +8,28 @@ export function carouselWc (sliderRoot) {
   let currentSlide = 0
   const maxSlide = slides.length
 
+  const slider = sliderRoot.querySelector('.slider')
+  // casi es mejor asignar gap desde js y no por clases, por la complejidad de recuperar el valor para usar a continuación
+  const sliderGapClass = slider.classList.contains('slider__type--full') ? 'slider__gap--0' : 'slider__gap'
+  slider.classList.add(sliderGapClass)
+  const sliderStyles = window.getComputedStyle(slider)
+  const sliderGap = +sliderStyles.getPropertyValue('gap').replace('px', '').replace('normal', 0)
+
   const translateSlide = (currentSlide) => {
     slides.forEach((slide, indx) => {
       const itemsWidth = slides[indx].offsetWidth
-      slide.style.transform = `translateX(${(itemsWidth + 8) * (currentSlide)}px)`
+      slide.style.transform = `translateX(${(itemsWidth + sliderGap) * (currentSlide)}px)`
     })
   }
 
-  // handleEvent(e)
-  const slider = sliderRoot.querySelector('.slider')
-  const sliderType = slider.classList.contains('items')
-    ? 'items'
-    : slider.classList.contains('full')
-      ? 'full'
-      : slider.classList.contains('items-svg')
-        ? 'items-svg'
-        : slider.classList.contains('items-data')
-          ? 'items-data'
-          : ''
-
   const containerWidth = slider.offsetWidth
   const itemsWidth = slides[0].offsetWidth
-  // no creo que sea necesario rest y meter gap por javascript para que el 8 sea una variable
 
   const rest = slider.offsetWidth % slides[0].offsetWidth
   const maxItems = Math.floor(slider.offsetWidth / slides[0].offsetWidth)
-  const maxItemsContained = (sliderType === 'full' || sliderType === 'items' || sliderType === 'items-svg' || sliderType === 'items-data')
-    ? (rest > 0 && slider.offsetWidth - ((slides[0].offsetWidth * maxItems) + (8 * (maxItems - 1)))) < 0
-        ? (Math.floor(slider.offsetWidth / slides[0].offsetWidth)) - 1
-        : (Math.floor(slider.offsetWidth / slides[0].offsetWidth))
-    : ''
+  const maxItemsContained = (rest > 0 && slider.offsetWidth - ((slides[0].offsetWidth * maxItems) + (sliderGap * (maxItems - 1)))) < 0
+    ? (Math.floor(slider.offsetWidth / slides[0].offsetWidth)) - 1
+    : (Math.floor(slider.offsetWidth / slides[0].offsetWidth))
 
   const handleNextSlide = () => {
     if (-currentSlide + maxItemsContained === maxSlide) {

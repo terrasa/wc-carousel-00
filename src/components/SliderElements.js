@@ -27,7 +27,7 @@ export class SliderElement extends HTMLElement {
     container.classList.add('slider__container')
     container.innerHTML=`<div class='slider ${SliderElement.type}'></div>`
 
-    if(SliderElement.type === 'items') {
+    if(SliderElement.type === 'slider__type--items') {
       const countriesKeys = Object.keys(countries)
       countriesKeys.forEach(async (key) => {
         const imageUrl = `../../maps/europe/${key}.svg`
@@ -41,7 +41,7 @@ export class SliderElement extends HTMLElement {
       return container
     }
 
-    if(SliderElement.type === 'items-svg') {
+    if(SliderElement.type === 'slider__type--items-svg') {
       const countriesKeys = Object.keys(countries)
       countriesKeys.forEach(async (key) => {
         const imageAlt = countries[key]
@@ -55,7 +55,7 @@ export class SliderElement extends HTMLElement {
       return container
     }
 
-    if(SliderElement.type === 'items-data') {
+    if(SliderElement.type === 'slider__type--items-data') {
       const countriesKeys = Object.keys(countries)
       countriesKeys.forEach(async (key) => {
         const imageAlt = countries[key]
@@ -82,7 +82,7 @@ export class SliderElement extends HTMLElement {
       return container
     }
 
-    if(SliderElement.type==='full') {
+    if(SliderElement.type==='slider__type--full') {
       const images = await getRandomImages()
       await images.forEach(async (image) => {
         const imageUrl = await image.urls.regular
@@ -110,9 +110,9 @@ export class SliderElement extends HTMLElement {
   async connectedCallback() {
     console.log('connected ya');
 
-    const styles = SliderElement.type === 'full'
+    const styles = SliderElement.type === 'slider__type--full'
       ? carousel
-      : SliderElement.type === 'items' || SliderElement.type === 'items-svg' || SliderElement.type === 'items-data'
+      : SliderElement.type === 'slider__type--items' || SliderElement.type === 'slider__type--items-svg' || SliderElement.type === 'slider__type--items-data'
         ? carouselItems
         : ''
 

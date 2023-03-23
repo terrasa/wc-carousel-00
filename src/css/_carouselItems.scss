@@ -7,10 +7,17 @@
 .slider {
   display: flex;
   align-items: center;
-  gap: 8px;
   height: 180px;
   position: relative;
   overflow: hidden;
+}
+
+.slider__gap--0 {
+  gap: 0;
+}
+
+.slider__gap {
+  gap: 0.5rem;
 }
 
 svg, path {
@@ -73,7 +80,7 @@ svg, path {
   z-index: 0;
   transition: all 0.5s;
 
-  .slider.items-data & {
+  .slider.slider__type--items-data & {
     .slide__container {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -188,7 +195,7 @@ svg, path {
   border: 1px solid #164444;
 }
 
-.slider.items-data {
+.slider.slider__type--items-data {
   ~.slider__btn {
   background-color: #6299f3;
   border: 1px solid #0c3983;

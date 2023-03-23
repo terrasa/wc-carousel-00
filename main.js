@@ -23,42 +23,24 @@ document.querySelector('#app').innerHTML = `
     <h2>Ejemplo Carrusel DATA</h2>
   </div>
 `
-const isSlider = document.querySelectorAll('#app .carousel')
+const allSliders = document.querySelectorAll('#app .carousel')
 
-isSlider.forEach(element => {
-  if (element.classList.contains('slider__type--full-js')) {
+const checkType = (carouselClass, newSlider, slider) => {
+  carouselClass.forEach((elementClass) => {
+    if (elementClass.startsWith('slider__type')) {
+      SliderElement.type = elementClass
+      slider.appendChild(newSlider)
+    }
+  })
+}
+
+allSliders.forEach((slider) => {
+  if (slider.classList.contains('slider__type--full-js')) {
     setSlider()
-  }
-  if (element.classList.contains('slider__type--full')) {
-    // const sliderAppFull = new SliderElement()
-    // SliderElement.type = 'full'
-    // element.appendChild(sliderAppFull)
-    const sliderApp = new SliderElement()
-    SliderElement.type = 'full'
-    element.appendChild(sliderApp)
-  }
-  if (element.classList.contains('slider__type--items')) {
-    // const sliderAppItems = new SliderElement()
-    // SliderElement.type = 'items'
-    // element.appendChild(sliderAppItems)
-    const sliderApp = new SliderElement()
-    SliderElement.type = 'items'
-    element.appendChild(sliderApp)
-  }
-  if (element.classList.contains('slider__type--items-svg')) {
-    // const sliderAppItemsSVG = new SliderElement()
-    // SliderElement.type = 'items-svg'
-    // element.appendChild(sliderAppItemsSVG)
-    const sliderApp = new SliderElement()
-    SliderElement.type = 'items-svg'
-    element.appendChild(sliderApp)
-  }
-  if (element.classList.contains('slider__type--items-data')) {
-    // const sliderAppItemsData = new SliderElement()
-    // SliderElement.type = 'items-data'
-    // element.appendChild(sliderAppItemsData)
-    const sliderApp = new SliderElement()
-    SliderElement.type = 'items-data'
-    element.appendChild(sliderApp)
+  } else {
+    const newSlider = new SliderElement()
+    const carouselClass = Object.values(slider.classList)
+
+    checkType(carouselClass, newSlider, slider)
   }
 })
