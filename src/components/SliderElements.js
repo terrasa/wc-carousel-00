@@ -8,7 +8,9 @@ const { ...countries } = EuropeanCountries
 const templateData = document.querySelector('template.slide__data')
 
 export class SliderElement extends HTMLElement {
-  maxSlide = null
+
+  // slider = sliderRoot.querySelector('.slider')
+  // containerWidth = null //slider.offsetWidth
   
   constructor () {
     super()
