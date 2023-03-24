@@ -11,6 +11,15 @@
   overflow: hidden;
 }
 
+/* con 0px se ve 1px de la imagen siguiente ???*/
+.slider__gap--0 {
+  gap: 1px; 
+}
+
+.slider__gap {
+  gap: 0.5rem;
+}
+
 .slider__slide {
   width: 100%;
   min-width: 100%;
