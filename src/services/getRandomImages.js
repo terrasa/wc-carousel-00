@@ -12,7 +12,6 @@ export const getRandomImages = async () => {
   try {
     const data = await response.json()
     const [...images] = data
-    console.log(images)
     return images
   } catch (err) {
     console.error(err.message)

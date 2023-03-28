@@ -1,6 +1,6 @@
 export function carouselWc (sliderRoot) {
   const slides = sliderRoot.querySelectorAll('.slider .slider__slide')
-  console.log('slides wc', slides)
+  console.log('slides wc')
 
   const nextSlide = sliderRoot.querySelector('.slider__btn--next')
   const prevSlide = sliderRoot.querySelector('.slider__btn--prev')
@@ -25,11 +25,11 @@ export function carouselWc (sliderRoot) {
   const containerWidth = slider.offsetWidth
   const itemsWidth = slides[0].offsetWidth
 
-  const rest = slider.offsetWidth % slides[0].offsetWidth
-  const maxItems = Math.floor(slider.offsetWidth / slides[0].offsetWidth)
-  const maxItemsContained = (rest > 0 && slider.offsetWidth - ((slides[0].offsetWidth * maxItems) + (sliderGap * (maxItems - 1)))) < 0
-    ? (Math.floor(slider.offsetWidth / slides[0].offsetWidth)) - 1
-    : (Math.floor(slider.offsetWidth / slides[0].offsetWidth))
+  const rest = containerWidth % itemsWidth
+  const maxItems = Math.floor(containerWidth / itemsWidth)
+  const maxItemsContained = (rest > 0 && containerWidth - ((itemsWidth * maxItems) + (sliderGap * (maxItems - 1)))) < 0
+    ? (Math.floor(containerWidth / itemsWidth)) - 1
+    : (Math.floor(containerWidth / itemsWidth))
 
   const handleNextSlide = () => {
     if (-currentSlide + maxItemsContained === maxSlide) {

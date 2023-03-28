@@ -1,5 +1,5 @@
 import { getRandomImages } from '../services/getRandomImages'
-import { carouselA } from './carouselA'
+import { carouselJs } from './carouselJs'
 
 export async function setSlider () {
   console.log('setSlider')
@@ -21,31 +21,5 @@ export async function setSlider () {
     isSliderItems.appendChild(slideItem)
   })
 
-  carouselA()
+  carouselJs()
 }
-
-// export class AppElement extends HTMLElement {
-
-//   constructor() {
-//     super();
-//   }
-
-// }
-
-// customElements.define("app-element", AppElement);
-
-// import { AppElement } from "./components/AppElement.js";
-
-// const appElement = new AppElement();
-// document.body.appendChild(appElement);
-
-// class AppElement extends HTMLElement {
-
-//   static get observedAttributes() {
-//     return ["value", "is-enabled"];
-//   }
-
-//   attributeChangedCallback(name, old, now) {
-//     console.log(`El atributo ${name} ha sido modificado de ${old} a ${now}.`);
-//   }
-// }

@@ -10,17 +10,33 @@ const templateData = document.querySelector('template.slide__data')
 export class SliderElement extends HTMLElement {
 
   // slider = sliderRoot.querySelector('.slider')
-  // containerWidth = null //slider.offsetWidth
-  
+
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
+    this.sliderRoot = this.shadowRoot
+  }
+  
+  static get observedAttributes() {
+    return ['container-width'];
+  }
+  
+  attributeChangedCallback(name, old, now) {
+    console.log('attributeChangedCallback - - - -');
+    console.log(`El atributo ${name} ha sido modificado de ${old} a ${now}.`);
+    console.log("Este componente tiene los atributos: ", this.getAttributeNames());
+    if(name === 'container-width' && old !== now) {
+      console.log('Si ha cambiado')
+      carouselWc(this.sliderRoot)
+    }
   }
 
-  // reload() {
-    
-  // }
-  // window.addEventListener('resize', this.reload)
+  reload(sliderRoot) {
+    const slider = sliderRoot.querySelector('.slider')
+    const containerWidth = slider.offsetWidth
+    this.setAttribute('container-width', containerWidth)
+    console.log('containerWidth', containerWidth)
+  }
   
   async setImages () {
     const container = document.createElement('div')
@@ -124,18 +140,17 @@ export class SliderElement extends HTMLElement {
 
     await this.render()
     
-    const sliderRoot = this.shadowRoot
-    carouselWc(sliderRoot)
-  }
+    // const sliderRoot = this.shadowRoot 
+    carouselWc(this.sliderRoot)
 
-  static get observedAttributes() {
-    return ["images"];
-  }
-
-  attributeChangedCallback(name, old, now) {
-    console.log(`El atributo ${name} ha sido modificado de ${old} a ${now}.`);
+    let resizeTimeout
+    window.addEventListener('resize', ()=> {
+      clearTimeout(resizeTimeout)
+      resizeTimeout = setTimeout(() => {
+        this.reload(this.sliderRoot)
+      }, 500)
+    })
   }
 }
-
 
 customElements.define('slider-element', SliderElement)
