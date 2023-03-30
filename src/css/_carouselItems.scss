@@ -79,6 +79,7 @@ svg, path {
 .slider__slide {
   z-index: 0;
   transition: all 0.5s;
+  text-decoration: none;
 
   .slider.slider__type--items-data & {
     .slide__container {
